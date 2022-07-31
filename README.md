@@ -1,3 +1,10 @@
+I am Dr. Pierre Olivier, a Data Scientist and biological oceanographer. My academic career has primarily focused on identifying, tracking, and forecasting patterns in the data, and more specifically, changes in marine food webs.
+
+- [] If you are more interested in the data science part, you can skip to the data analysis part,
+- [] But if you don't know yet what are food webs and would like a short introduction, [tag along](https://pierreenolivier.github.io/datascience_portfolio/).
+
+You can access my research publications on my [**Google Scholar page**](https://scholar.google.fr/citations?user=QaG46p0AAAAJ&hl=en).
+
 This is a template for creating an [HTML GitBook style](https://bookdown.org/yihui/bookdown/html.html#gitbook-style) **[bookdown](https://github.com/rstudio/bookdown)** book, [hosted on GitHub Pages](https://bookdown.org/yihui/bookdown/github.html). It is based on the one created with *File, New Project..., New Directory, Book Project using bookdown* in RStudio. It assumes you know how to use git/GitHub and R Markdown, and have some familiarity with the **bookdown** package. If you don't, the package author Yihue Xie's RStudio webinar *[Introduction to Bookdown (R Package)](https://www.youtube.com/watch?v=dVqVscgwSpw)* provides an excellent introduction. In addition, check out [*bookdown: Authoring Books and Technical Documents with R Markdown*](https://bookdown.org/yihui/bookdown), also by Yihui Xie, both for the content and the format--it is itself a **bookdown** book.
 
 

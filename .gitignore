@@ -1,4 +1,9 @@
+# Files, folders, and formats to ignore
+
 .Rhistory
 .RData
 .Rproj.user
 *.Rproj
+
+# Raw data
+raw_data/

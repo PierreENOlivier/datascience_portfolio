@@ -7,20 +7,37 @@ I am Dr. Pierre Olivier, a Data Scientist and biological oceanographer. My acade
 You can access my research publications on my [**Google Scholar page**](https://scholar.google.fr/citations?user=QaG46p0AAAAJ&hl=en).
 
 ### A couple of useful links
-- [ ][**Google Scholar**](https://scholar.google.fr/citations?user=QaG46p0AAAAJ&hl=en)
-- [ ][**LinkedIn**](https://www.linkedin.com/in/pierre-olivier-phd-data-1485598b/)
-- [ ][**Twitter**](https://twitter.com/PierreENOlivier)  
+- [ ] [**Google Scholar**](https://scholar.google.fr/citations?user=QaG46p0AAAAJ&hl=en)
+- [ ] [**LinkedIn**](https://www.linkedin.com/in/pierre-olivier-phd-data-1485598b/)
+- [ ] [**Twitter**](https://twitter.com/PierreENOlivier)  
 
 
 
 
-## Diagram progres
+## Progress portfolio
 ```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+gantt
+    title Progress of portfolio
+    dateFormat  YYYY-MM-DD
+    
+    section About Me
+    Writing           :a1, 2022-08-01, 5d
+    Reviewing     :after a1  , 2d
+    
+    section Intro Networks
+    Writing           :a2, 2022-08-02, 5d
+    Illustrations     :after a2  , 2d
+    
+    section Project 1
+    Description           :a3, 2022-08-02, 2d
+    Data preprocessing    :a4, 2022-08-01, 3d
+    f(metrics)    :a5, after a4  , 3d
+    f(clustering)    :after a5  , 3d
+    
+    section Project 2
+    Description     :2022-08-10  , 5d
+    Preprocessing      :a6, 2022-08-11  , 2d
+    Writing ML         :after a6, 2d
 ```
     
 This is a template for creating an [HTML GitBook style](https://bookdown.org/yihui/bookdown/html.html#gitbook-style) **[bookdown](https://github.com/rstudio/bookdown)** book, [hosted on GitHub Pages](https://bookdown.org/yihui/bookdown/github.html). It is based on the one created with *File, New Project..., New Directory, Book Project using bookdown* in RStudio. It assumes you know how to use git/GitHub and R Markdown, and have some familiarity with the **bookdown** package. If you don't, the package author Yihue Xie's RStudio webinar *[Introduction to Bookdown (R Package)](https://www.youtube.com/watch?v=dVqVscgwSpw)* provides an excellent introduction. In addition, check out [*bookdown: Authoring Books and Technical Documents with R Markdown*](https://bookdown.org/yihui/bookdown), also by Yihui Xie, both for the content and the format--it is itself a **bookdown** book.

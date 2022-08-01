@@ -1,9 +1,9 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAME HERE"
+title: "Data Science Portfolio - Statistical inference and Machine Learning"
+author: "Dr. Pierre Olivier"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
 
-# Down the rabbit-hole
+# ABOUT ME AND DATA SCIENCE
 

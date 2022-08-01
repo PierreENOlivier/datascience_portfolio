@@ -11,15 +11,11 @@ You can access my research publications on my [**Google Scholar page**](https://
     <summary>
       <strong><span style="color: #0011AA; font-size:18px;">Links</span></strong>
     </summary>
-    <p>
     
-    - [ ][**Google Scholar page**](https://scholar.google.fr/citations?user=QaG46p0AAAAJ&hl=en)
-    - [ ][**LinkedIn**](https://www.linkedin.com/in/pierre-olivier-phd-data-1485598b/)
-    - [ ][**LinkedIn**](https://twitter.com/PierreENOlivier)
+    - <a href="https://scholar.google.fr/citations?user=QaG46p0AAAAJ&hl=en">Google Scholar page</a>
+        - <a href="https://www.linkedin.com/in/pierre-olivier-phd-data-1485598b/">LinkedIn</a>
+        - <a href="https://twitter.com/PierreENOlivier">Twitter</a>
     
-    
-
-    </p>
   </details>
   <br/><hr/>
 

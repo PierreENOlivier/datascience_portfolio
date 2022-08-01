@@ -7,17 +7,11 @@ I am Dr. Pierre Olivier, a Data Scientist and biological oceanographer. My acade
 You can access my research publications on my [**Google Scholar page**](https://scholar.google.fr/citations?user=QaG46p0AAAAJ&hl=en).
 
 ### A couple of useful links
-  <details>
-    <summary>
-      <strong><span style="color: #0011AA; font-size:18px;">Links</span></strong>
-    </summary>
-    
-    - <a href="https://scholar.google.fr/citations?user=QaG46p0AAAAJ&hl=en">Google Scholar page</a>
-        - <a href="https://www.linkedin.com/in/pierre-olivier-phd-data-1485598b/">LinkedIn</a>
-        - <a href="https://twitter.com/PierreENOlivier">Twitter</a>
-    
-  </details>
-  <br/><hr/>
+- [ ][**Google Scholar**](https://scholar.google.fr/citations?user=QaG46p0AAAAJ&hl=en)
+- [ ][**LinkedIn**](https://www.linkedin.com/in/pierre-olivier-phd-data-1485598b/)
+- [ ][**Twitter**](https://twitter.com/PierreENOlivier)  
+
+
 
 
 ## Diagram progres

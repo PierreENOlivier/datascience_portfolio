@@ -1,0 +1,13 @@
+# Global options for chunks
+
+## example R options set globally
+options(width = 90)
+
+## example chunk options set globally
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  fig.align = 'center',
+  cache=TRUE,
+  out.width="100%"
+)

@@ -1,0 +1,13 @@
+about-me-and-data-science
+including-code
+introduction-to-networks-and-food-webs
+what-are-networks
+short-description-of-the-projects-included-in-this-portfolio
+project-1---how-to-build-simpler-network-models-using-unsupervised-machine-learning
+project-2---guessing-game-using-machine-learning-classification-algorithms
+how-to-simplify-networks-using-machine-learning-algorithms
+why-do-we-want-to-simplify-networks
+what-are-networks-1
+how-fast-are-you-based-on-characteristics
+why-do-we-want-to-simplify-networks-1
+what-are-networks-2

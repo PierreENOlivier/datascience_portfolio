@@ -1,7 +1,12 @@
 bookdown::bs4_book:
   css: style.css
+  theme:
+    bootswatch: cosmo
+    primary: "#0403b2"
   repo:
     base: https://github.com/PierreENOlivier/datascience_portfolio.git
+    branch: main
+
 
   config:
     toc:

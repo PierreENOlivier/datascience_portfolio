@@ -12,12 +12,10 @@ description: |
     
 ---
 
-# About Me and Data Science
+# About Me
 
-Some text
+## Who I am
 
 This is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
 
-## Including Code
-
-You can include R code in the document as follows:
+## My journey in Data Science

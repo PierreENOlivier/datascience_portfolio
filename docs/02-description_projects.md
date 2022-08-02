@@ -1,4 +1,6 @@
-# Short Description of the projects included in this portfolio
+# Projects in this portfolio
+
+Here I will provide a short description of each project included in this portfolio.
 
 ## Project 1 - How to build simpler network models using unsupervised machine learning
 

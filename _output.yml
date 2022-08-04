@@ -1,17 +1,25 @@
 bookdown::bs4_book:
   css: style.css
   theme:
-    bootswatch: cosmo
+    bootswatch: cerulean
     primary: "#0403b2"
   repo:
     base: https://github.com/PierreENOlivier/datascience_portfolio.git
     branch: main
-
-
+bookdown::gitbook:
+  css: style.css
   config:
+    sharing:
+      github: yes
+      facebook: no
+      twitter: no
+    download: true
     toc:
+      collapse: section
       before: |
         <li><a href="./">Data Science Portfolio - PO</a></li>
       after: |
         <li><a href="https://github.com/PierreENOlivier/datascience_portfolio.git" target="blank">View the repository</a></li>
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+    toc_float:
+      collapsed: TRUE

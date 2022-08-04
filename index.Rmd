@@ -3,8 +3,10 @@ title: "Data Science Portfolio"
 author: "Dr. Pierre Olivier"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-output: bookdown::bs4_book
 url: https://pierreenolivier.github.io/datascience_portfolio/index.html
+output: 
+  bookdown::gitbook:
+      highlight: tango
 documentclass: book
 new_session: yes # use the K-M rendering method
 description: |

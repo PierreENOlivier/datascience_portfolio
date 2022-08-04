@@ -1,6 +1,6 @@
 book_filename: "bookdownproj"
 new_session: true
-before_chapter_script: ["_global_options.R"]
+before_chapter_script: ["_global_options.R", "_before_chapter.R"]
 output_dir: "docs"
 delete_merged_file: true
 edit: https://github.com/PierreENOlivier/datascience_portfolio/edit/main/%s
@@ -8,4 +8,12 @@ view: https://github.com/PierreENOlivier/datascience_portfolio/blob/main/%s
 language:
   ui:
     chapter_name: "Part "
-  
+
+rmd_files: [
+  "index.Rmd", 
+  "01-intro_food_web.Rmd", 
+  "02-description_projects.Rmd", 
+  "P1_01-project_setup.Rmd",
+  "P1_02-data_exploration.Rmd",
+  "P1_03_data_analysis.Rmd",
+  "P2_01-project_setup.Rmd"]  

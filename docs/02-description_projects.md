@@ -5,3 +5,16 @@ Here I will provide a short description of each project included in this portfol
 ## Project 1 - How to build simpler network models using unsupervised machine learning
 
 ## Project 2 - Guessing game using Machine Learning classification algorithms
+
+## File structure of projects
+Each project has been built under a common structure illustrated below.
+
+Files associated to a specific project were identified by an ID at the start of the file name.
+
+Within a project, each file is organized along the data pipeline.
+
+<center>
+
+![File structure of the portfolio \label{file_structure}](images/file_structure.png){width=720px}
+
+</center>

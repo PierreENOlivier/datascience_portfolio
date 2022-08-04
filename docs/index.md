@@ -1,10 +1,12 @@
 --- 
 title: "Data Science Portfolio"
 author: "Dr. Pierre Olivier"
-date: "2022-08-02"
+date: "2022-08-03"
 site: bookdown::bookdown_site
-output: bookdown::bs4_book
 url: https://pierreenolivier.github.io/datascience_portfolio/index.html
+output: 
+  bookdown::gitbook:
+      highlight: tango
 documentclass: book
 new_session: yes # use the K-M rendering method
 description: |

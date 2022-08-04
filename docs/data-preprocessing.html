@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Part 4 Data preprocessing | Data Science Portfolio</title>
+  <meta name="description" content="Portfolio projects in Data Science: machine learning and statistical inference" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Part 4 Data preprocessing | Data Science Portfolio" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Portfolio projects in Data Science: machine learning and statistical inference" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Part 4 Data preprocessing | Data Science Portfolio" />
+  
+  <meta name="twitter:description" content="Portfolio projects in Data Science: machine learning and statistical inference" />
+  
+
+<meta name="author" content="Dr. Pierre Olivier" />
+
+
+<meta name="date" content="2022-08-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="projects-in-this-portfolio.html"/>
+<link rel="next" href="data-exploration.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Science Portfolio - PO</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About Me</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#who-i-am"><i class="fa fa-check"></i><b>1.1</b> Who I am</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#my-journey-in-data-science"><i class="fa fa-check"></i><b>1.2</b> My journey in Data Science</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro-foodweb.html"><a href="intro-foodweb.html"><i class="fa fa-check"></i><b>2</b> Introduction to networks and food webs</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intro-foodweb.html"><a href="intro-foodweb.html#what-are-networks"><i class="fa fa-check"></i><b>2.1</b> What are networks?</a></li>
+<li class="chapter" data-level="2.2" data-path="intro-foodweb.html"><a href="intro-foodweb.html#how-to-analyse-network-data"><i class="fa fa-check"></i><b>2.2</b> How to analyse network data</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="projects-in-this-portfolio.html"><a href="projects-in-this-portfolio.html"><i class="fa fa-check"></i><b>3</b> Projects in this portfolio</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="projects-in-this-portfolio.html"><a href="projects-in-this-portfolio.html#project-1---how-to-build-simpler-network-models-using-unsupervised-machine-learning"><i class="fa fa-check"></i><b>3.1</b> Project 1 - How to build simpler network models using unsupervised machine learning</a></li>
+<li class="chapter" data-level="3.2" data-path="projects-in-this-portfolio.html"><a href="projects-in-this-portfolio.html#project-2---guessing-game-using-machine-learning-classification-algorithms"><i class="fa fa-check"></i><b>3.2</b> Project 2 - Guessing game using Machine Learning classification algorithms</a></li>
+<li class="chapter" data-level="3.3" data-path="projects-in-this-portfolio.html"><a href="projects-in-this-portfolio.html#file-structure-of-projects"><i class="fa fa-check"></i><b>3.3</b> File structure of projects</a></li>
+</ul></li>
+<li class="part"><span><b>PROJECT 1</b></span></li>
+<li class="chapter" data-level="4" data-path="data-preprocessing.html"><a href="data-preprocessing.html"><i class="fa fa-check"></i><b>4</b> Data preprocessing</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-preprocessing.html"><a href="data-preprocessing.html#load-dependencies"><i class="fa fa-check"></i><b>4.1</b> Load dependencies</a></li>
+<li class="chapter" data-level="4.2" data-path="data-preprocessing.html"><a href="data-preprocessing.html#data-importation"><i class="fa fa-check"></i><b>4.2</b> Data importation</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="data-preprocessing.html"><a href="data-preprocessing.html#import-species"><i class="fa fa-check"></i><b>4.2.1</b> Import species</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data-preprocessing.html"><a href="data-preprocessing.html#import-interactions"><i class="fa fa-check"></i><b>4.2.2</b> Import interactions</a></li>
+<li class="chapter" data-level="4.2.3" data-path="data-preprocessing.html"><a href="data-preprocessing.html#import-literature-references"><i class="fa fa-check"></i><b>4.2.3</b> Import literature references</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data-preprocessing.html"><a href="data-preprocessing.html#clean-datat-set"><i class="fa fa-check"></i><b>4.3</b> Clean datat set</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-preprocessing.html"><a href="data-preprocessing.html#split-columns"><i class="fa fa-check"></i><b>4.3.1</b> Split columns</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-preprocessing.html"><a href="data-preprocessing.html#section"><i class="fa fa-check"></i><b>4.4</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-exploration.html"><a href="data-exploration.html"><i class="fa fa-check"></i><b>5</b> Data exploration</a></li>
+<li class="chapter" data-level="6" data-path="data-analysis.html"><a href="data-analysis.html"><i class="fa fa-check"></i><b>6</b> Data analysis</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="data-analysis.html"><a href="data-analysis.html#load-dependencies-1"><i class="fa fa-check"></i><b>6.1</b> Load dependencies</a></li>
+</ul></li>
+<li class="part"><span><b>PROJECT 2</b></span></li>
+<li class="chapter" data-level="7" data-path="how-fast-are-you-based-on-characteristics.html"><a href="how-fast-are-you-based-on-characteristics.html"><i class="fa fa-check"></i><b>7</b> How fast are you based on characteristics</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="how-fast-are-you-based-on-characteristics.html"><a href="how-fast-are-you-based-on-characteristics.html#a-title"><i class="fa fa-check"></i><b>7.1</b> A title</a></li>
+<li class="chapter" data-level="7.2" data-path="how-fast-are-you-based-on-characteristics.html"><a href="how-fast-are-you-based-on-characteristics.html#a-title-2"><i class="fa fa-check"></i><b>7.2</b> A Title 2</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/PierreENOlivier/datascience_portfolio.git" target="blank">View the repository</a></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science Portfolio</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-preprocessing" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Part 4</span> Data preprocessing<a href="data-preprocessing.html#data-preprocessing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>We will use the food web network compiled by Planque et al. (2014) which is available from the repository <a href="https://esapubs.org/archive/search.php?journal=E&amp;year=2014&amp;firstAuthor=Planque&amp;isDP=1">‘Ecological Archives’</a> (ID E095-124).</p>
+<p><em>N.B.</em> If needed, the dataset can be retrieved from:</p>
+<ul>
+<li>the Journal “Ecology”,</li>
+<li>published in Year “2014”,</li>
+<li>by the First author “Planque”,</li>
+<li>as a Data Paper (“Yes”).</li>
+</ul>
+<div id="load-dependencies" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Load dependencies<a href="data-preprocessing.html#load-dependencies" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="data-preprocessing.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="data-preprocessing.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Attaching packages ───────────────────────────────────────────────── tidyverse 1.3.2 ──</span></span>
+<span id="cb1-3"><a href="data-preprocessing.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✔ ggplot2 3.3.6     ✔ purrr   0.3.4</span></span>
+<span id="cb1-4"><a href="data-preprocessing.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✔ tibble  3.1.8     ✔ dplyr   1.0.9</span></span>
+<span id="cb1-5"><a href="data-preprocessing.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✔ tidyr   1.2.0     ✔ stringr 1.4.0</span></span>
+<span id="cb1-6"><a href="data-preprocessing.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✔ readr   2.1.2     ✔ forcats 0.5.1</span></span>
+<span id="cb1-7"><a href="data-preprocessing.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Conflicts ──────────────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
+<span id="cb1-8"><a href="data-preprocessing.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span></span>
+<span id="cb1-9"><a href="data-preprocessing.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></span>
+<span id="cb1-10"><a href="data-preprocessing.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb1-11"><a href="data-preprocessing.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-12"><a href="data-preprocessing.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Attaching package: &#39;magrittr&#39;</span></span>
+<span id="cb1-13"><a href="data-preprocessing.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-14"><a href="data-preprocessing.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:purrr&#39;:</span></span>
+<span id="cb1-15"><a href="data-preprocessing.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-16"><a href="data-preprocessing.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     set_names</span></span>
+<span id="cb1-17"><a href="data-preprocessing.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-18"><a href="data-preprocessing.html#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:tidyr&#39;:</span></span>
+<span id="cb1-19"><a href="data-preprocessing.html#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-20"><a href="data-preprocessing.html#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     extract</span></span></code></pre></div>
+</div>
+<div id="data-importation" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Data importation<a href="data-preprocessing.html#data-importation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The dataset is provided as tables formatted inside text files.</p>
+<div id="import-species" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Import species<a href="data-preprocessing.html#import-species" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="data-preprocessing.html#cb2-1" aria-hidden="true" tabindex="-1"></a>species_list <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;raw_data/Barents_Sea/SpeciesList_2015.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-2"><a href="data-preprocessing.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(species_list)</span>
+<span id="cb2-3"><a href="data-preprocessing.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           TROPHOSPECIES ABBREVIATION         PHYLUM_SUBPYLUM                   CLASS</span></span>
+<span id="cb2-4"><a href="data-preprocessing.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1              DETRITUS      DET_IND                Detritus                Detritus</span></span>
+<span id="cb2-5"><a href="data-preprocessing.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  AUTOTHROPH_FLAGELLAT      AUT_FLA   Autotroph flagellates   Autotroph flagellates</span></span>
+<span id="cb2-6"><a href="data-preprocessing.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3        BACTERIA_INDET      BAC_IND            Picoplankton            Picoplankton</span></span>
+<span id="cb2-7"><a href="data-preprocessing.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                DIATOM       DIATOM           Microplankton           Microplankton</span></span>
+<span id="cb2-8"><a href="data-preprocessing.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 HETEROTROPH_FLAGELLAT      HET_FLA Heterotroph flagellates Heterotroph flagellates</span></span>
+<span id="cb2-9"><a href="data-preprocessing.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6             ICE_ALGAE      ICE_ALG               Ice algae               Ice algae</span></span>
+<span id="cb2-10"><a href="data-preprocessing.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     ORDER                  FAMILY      GROUP</span></span>
+<span id="cb2-11"><a href="data-preprocessing.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                Detritus                Detritus 1_Plankton</span></span>
+<span id="cb2-12"><a href="data-preprocessing.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2   Autotroph flagellates   Autotroph flagellates 1_Plankton</span></span>
+<span id="cb2-13"><a href="data-preprocessing.html#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3            Picoplankton            Picoplankton 1_Plankton</span></span>
+<span id="cb2-14"><a href="data-preprocessing.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4           Microplankton           Microplankton 1_Plankton</span></span>
+<span id="cb2-15"><a href="data-preprocessing.html#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Heterotroph flagellates Heterotroph flagellates 1_Plankton</span></span>
+<span id="cb2-16"><a href="data-preprocessing.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6               Ice algae               Ice algae 1_Plankton</span></span></code></pre></div>
+<p>The list of species is provide as a table that contains the species names along with an abbreviation and the taxonomy (i.e. classification of each organism).</p>
+</div>
+<div id="import-interactions" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Import interactions<a href="data-preprocessing.html#import-interactions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="data-preprocessing.html#cb3-1" aria-hidden="true" tabindex="-1"></a>pairwise_list <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;raw_data/Barents_Sea/PairwiseList_2015.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-2"><a href="data-preprocessing.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pairwise_list)</span>
+<span id="cb3-3"><a href="data-preprocessing.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             PWKEY    PREDATOR                  PREY CODE</span></span>
+<span id="cb3-4"><a href="data-preprocessing.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 ACA_SPP-ACA_SPP ACARTIA_SPP           ACARTIA_SPP    2</span></span>
+<span id="cb3-5"><a href="data-preprocessing.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 ACA_SPP-AUT_FLA ACARTIA_SPP  AUTOTHROPH_FLAGELLAT    1</span></span>
+<span id="cb3-6"><a href="data-preprocessing.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  ACA_SPP-DIATOM ACARTIA_SPP                DIATOM    1</span></span>
+<span id="cb3-7"><a href="data-preprocessing.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 ACA_SPP-HET_FLA ACARTIA_SPP HETEROTROPH_FLAGELLAT    1</span></span>
+<span id="cb3-8"><a href="data-preprocessing.html#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 ACA_SPP-MIX_FLA ACARTIA_SPP MIXOTROPH_FLAGELLATES    4</span></span>
+<span id="cb3-9"><a href="data-preprocessing.html#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  ACA_SPP-PROZOO ACARTIA_SPP      PROTOZOOPLANKTON    1</span></span></code></pre></div>
+<p>The list of trophic interactions (a.k.a. relationships of ‘who eats and whom’) is provided as a pairwise list. The first column contains an identifier.
+The consecutive collumns PREDATOR and PREY contains the of the predator and prey, respectively. The row contains the relationship between a predator and a prey.</p>
+</div>
+<div id="import-literature-references" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Import literature references<a href="data-preprocessing.html#import-literature-references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="data-preprocessing.html#cb4-1" aria-hidden="true" tabindex="-1"></a>references <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;raw_data/Barents_Sea/References_2015.txt&quot;</span>)</span>
+<span id="cb4-2"><a href="data-preprocessing.html#cb4-2" aria-hidden="true" tabindex="-1"></a>pairwise_to_references <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;raw_data/Barents_Sea/Pairwise2References_2015.txt&quot;</span>)</span></code></pre></div>
+<p>Both ‘references’ and ‘pairwise_to_references’ tables contain metadata about the interactions.</p>
+</div>
+</div>
+<div id="clean-datat-set" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Clean datat set<a href="data-preprocessing.html#clean-datat-set" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Correct mispelling in column names:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="data-preprocessing.html#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="data-preprocessing.html#cb5-2" aria-hidden="true" tabindex="-1"></a>species_list <span class="sc">%&lt;&gt;%</span> dplyr<span class="sc">::</span><span class="fu">rename</span>(., <span class="at">PHYLUM_SUBPHYLUM =</span> PHYLUM_SUBPYLUM)</span></code></pre></div>
+<p>Correct mispelling in species name</p>
+<ol style="list-style-type: decimal">
+<li>Identify patterns using regular expressions while excluding the “_” in the names</li>
+<li>Check what patterns need replacing</li>
+<li>Replace the patterns</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data-preprocessing.html#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="data-preprocessing.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper function to apply to each column</span></span>
+<span id="cb6-3"><a href="data-preprocessing.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="data-preprocessing.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb6-5"><a href="data-preprocessing.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># has_non_letters &lt;- apply(species_list, 2, FUN = find_patterns, to_find = &quot;[^\\p{L} ^_]&quot;)</span></span>
+<span id="cb6-6"><a href="data-preprocessing.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb6-7"><a href="data-preprocessing.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb6-8"><a href="data-preprocessing.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># try &lt;- species_list %&gt;% mutate(</span></span>
+<span id="cb6-9"><a href="data-preprocessing.html#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   has_non_letters = grepl(&quot;[^\\p{L} ^_]&quot;, df$names, perl = TRUE)</span></span>
+<span id="cb6-10"><a href="data-preprocessing.html#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span></code></pre></div>
+<div id="split-columns" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Split columns<a href="data-preprocessing.html#split-columns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can extract more information from the ‘trophospecies’ column that contains both the Genus and the species name. We can use that additional information for the classification.</p>
+<p><em>N.B.</em> It does not matter if you do not know what Genus and species names are. Just know that they are deeper levels in the taxonomy of an organism.</p>
+</div>
+</div>
+<div id="section" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> </h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="projects-in-this-portfolio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-exploration.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/PierreENOlivier/datascience_portfolio/edit/main/P1_01-project_setup.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/PierreENOlivier/datascience_portfolio/blob/main/P1_01-project_setup.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+},
+"toc_float": {
+"collapsed": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

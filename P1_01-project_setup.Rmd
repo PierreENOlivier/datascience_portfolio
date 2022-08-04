@@ -1,0 +1,96 @@
+# (PART\*) PROJECT 1 {-}
+
+Objective: We want to simplify a network by identifying nodes sharing similar characteristics.
+
+Solution: We can classify the nodes into subgroups. Subgroups are clusters of nodes with similar characteristics (e.g. they belong to the same taxonomy, or they eat similar food). However, we do not know beforehand what the subgroups will be.
+
+# Data preprocessing
+We will use the food web network compiled by Planque et al. (2014) which is available from the repository ['Ecological Archives'](https://esapubs.org/archive/search.php?journal=E&year=2014&firstAuthor=Planque&isDP=1) (ID E095-124).
+
+_N.B._ If needed, the dataset can be retrieved from:
+
+- the Journal "Ecology",
+- published in Year "2014",
+- by the First author "Planque",
+- as a Data Paper ("Yes").
+
+## Load dependencies
+```{r echo=TRUE, results='hide'}
+# rm(list = ls())
+library(tidyverse)
+library(magrittr)
+
+old_opts <- options() # preserve current preferences for after we exist the function
+options(box.path = c("./scripts", 
+                       "../scripts",
+                       "./scripts/box",
+                       "../scripts/box") )
+  
+
+```
+
+## Data importation
+
+
+
+The dataset is provided as tables formatted inside text files.
+
+### Import species
+```{r import-species}
+species_list <- read.delim("raw_data/Barents_Sea/SpeciesList_2015.txt", header = TRUE)
+head(species_list)
+
+```
+
+The list of species is provide as a table that contains the species names along with an abbreviation and the taxonomy (i.e. classification of each organism).
+
+### Import interactions
+```{r import-pairwise}
+pairwise_list <- read.delim("raw_data/Barents_Sea/PairwiseList_2015.txt", header = TRUE)
+head(pairwise_list)
+```
+The list of trophic interactions (a.k.a. relationships of 'who eats and whom') is provided as a pairwise list. The first column contains an identifier.
+The consecutive collumns PREDATOR and PREY contains the  of the predator and prey, respectively. The row contains the relationship between a predator and a prey.
+
+### Import literature references
+```{r import-refs}
+references <- read.delim("raw_data/Barents_Sea/References_2015.txt")
+pairwise_to_references <- read.delim("raw_data/Barents_Sea/Pairwise2References_2015.txt")
+```
+Both 'references' and 'pairwise_to_references' tables contain metadata about the interactions.
+
+## Clean datat set
+
+Correct mispelling in column names:
+```{r correct-phylum}
+
+species_list %<>% dplyr::rename(., PHYLUM_SUBPHYLUM = PHYLUM_SUBPYLUM)
+
+```
+
+Correct mispelling in species name
+
+1. Identify patterns using regular expressions while excluding the "_" in the names
+2. Check what patterns need replacing
+2. Replace the patterns
+```{r}
+
+# Helper function to apply to each column
+box::use(box/modify_strings[locate_pattern])
+
+box::use(box/refresh_box)
+refresh_box$refresh("box/modify_strings")
+
+
+```
+### Split columns
+We can extract more information from the 'trophospecies' column that contains both the Genus and the species name. We can use that additional information for the classification.
+
+_N.B._ It does not matter if you do not know what Genus and species names are. Just know that they are deeper levels in the taxonomy of an organism.
+
+```{r split-genus}
+
+```
+
+
+## 

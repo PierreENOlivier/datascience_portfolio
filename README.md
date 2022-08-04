@@ -39,3 +39,6 @@ gantt
     Preprocessing      :a6, 2022-08-11  , 2d
     Writing ML         :after a6, 2d
 ```
+
+## File structure
+![File structure of the portfolio](images/file_structure.png){width=900px}

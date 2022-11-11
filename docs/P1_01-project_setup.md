@@ -1,5 +1,3 @@
-# (PART\*) PROJECT 1 {-}
-
 Objective: We want to simplify a network by identifying nodes sharing similar characteristics.
 
 Solution: We can classify the nodes into subgroups. Subgroups are clusters of nodes with similar characteristics (e.g. they belong to the same taxonomy, or they eat similar food). However, we do not know beforehand what the subgroups will be.
@@ -17,26 +15,25 @@ _N.B._ If needed, the dataset can be retrieved from:
 ## Load dependencies
 
 ```r
+# rm(list = ls())
 library(tidyverse)
-#> ── Attaching packages ───────────────────────────────────────────────── tidyverse 1.3.2 ──
-#> ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
-#> ✔ tibble  3.1.8     ✔ dplyr   1.0.9
-#> ✔ tidyr   1.2.0     ✔ stringr 1.4.0
-#> ✔ readr   2.1.2     ✔ forcats 0.5.1
-#> ── Conflicts ──────────────────────────────────────────────────── tidyverse_conflicts() ──
-#> ✖ dplyr::filter() masks stats::filter()
-#> ✖ dplyr::lag()    masks stats::lag()
 library(magrittr)
-#> 
-#> Attaching package: 'magrittr'
-#> 
-#> The following object is masked from 'package:purrr':
-#> 
-#>     set_names
-#> 
-#> The following object is masked from 'package:tidyr':
-#> 
-#>     extract
+
+old_opts <- options() # preserve current preferences for after we exist the function
+options(box.path = c("./scripts", 
+                       "../scripts",
+                       "./scripts/box",
+                       "../scripts/box") )
+  
+```
+
+Load modules
+
+```r
+box::use(box/modify_strings[locate_pattern, replace_pattern])
+# box::use(box/refresh_box[refresh])
+# refresh("box/modify_strings")
+         
 ```
 
 ## Data importation
@@ -49,6 +46,7 @@ The dataset is provided as tables formatted inside text files.
 
 ```r
 species_list <- read.delim("raw_data/Barents_Sea/SpeciesList_2015.txt", header = TRUE)
+sp_save <- species_list # keep original copy
 head(species_list)
 #>           TROPHOSPECIES ABBREVIATION         PHYLUM_SUBPYLUM                   CLASS
 #> 1              DETRITUS      DET_IND                Detritus                Detritus
@@ -72,6 +70,7 @@ The list of species is provide as a table that contains the species names along 
 
 ```r
 pairwise_list <- read.delim("raw_data/Barents_Sea/PairwiseList_2015.txt", header = TRUE)
+pw_save <- species_list # keep original copy
 head(pairwise_list)
 #>             PWKEY    PREDATOR                  PREY CODE
 #> 1 ACA_SPP-ACA_SPP ACARTIA_SPP           ACARTIA_SPP    2
@@ -82,7 +81,7 @@ head(pairwise_list)
 #> 6  ACA_SPP-PROZOO ACARTIA_SPP      PROTOZOOPLANKTON    1
 ```
 The list of trophic interactions (a.k.a. relationships of 'who eats and whom') is provided as a pairwise list. The first column contains an identifier.
-The consecutive collumns PREDATOR and PREY contains the  of the predator and prey, respectively. The row contains the relationship between a predator and a prey.
+The consecutive columns PREDATOR and PREY contains the species names of the predator and prey, respectively. The row contains the relationship between a predator and a prey.
 
 ### Import literature references
 
@@ -92,7 +91,10 @@ pairwise_to_references <- read.delim("raw_data/Barents_Sea/Pairwise2References_2
 ```
 Both 'references' and 'pairwise_to_references' tables contain metadata about the interactions.
 
-## Clean datat set
+## Data cleaning and augmentation
+### Species list
+
+#### Correct mispelling and non-letter characters
 
 Correct mispelling in column names:
 
@@ -110,22 +112,119 @@ Correct mispelling in species name
 ```r
 
 # Helper function to apply to each column
-
-# 
-# has_non_letters <- apply(species_list, 2, FUN = find_patterns, to_find = "[^\\p{L} ^_]")
-# 
-# 
-# try <- species_list %>% mutate(
-#   has_non_letters = grepl("[^\\p{L} ^_]", df$names, perl = TRUE)
-# )
-
+box::use(box/modify_strings[locate_pattern])
+strings_to_correct <- locate_pattern(species_list, "[^0-9a-zA-Z_]")
+#> NA rows contain the pattern: [^0-9a-zA-Z_] 
+#> Column: 1
+#> Column: 2
+#> Column: 3
+#> Column: 4
+#> Column: 5
+#> Column: 6
+#> Column: 7
+print(strings_to_correct)
+#> [1] "BERO\xe8_SP"                    "OITHONA_SPINIROSTRIS/ATLANTICA"
+#> [3] "Autotroph flagellates"          "Heterotroph flagellates"       
+#> [5] "Ice algae"                      "Mixotroph flagellates"         
+#> [7] "Amphipoda/Gammarida"            "Amphipoda/Gammaridea"          
+#> [9] "Amphipoda/Hyperiidea"
 ```
-### Split columns
-We can extract more information from the 'trophospecies' column that contains both the Genus and the species name. We can use that additional information for the classification.
+The organisms names are inconsistent and contain [**ASCII strings**](https://www.ascii-code.com/), slashes, and spaces that R won't handle properly.
+We will replace them.
+
+
+```r
+# Store the patterns
+patterns <- c("\xe8", " ", "/")
+
+# Store their replacements
+replacements <- c("E", "_", "_")
+
+# Replace the patterns in all columns
+box::use(box/modify_strings[replace_pattern])
+
+species_list <- replace_pattern(x = species_list, vector_pattern = patterns, vector_replacement = replacements )
+#> Replacing '<e8>' with 'E' 
+#> Replacing ' ' with '_' 
+#> Replacing '/' with '_'
+sp_save <- species_list
+# species_list <- sp_save
+```
+
+Some of the latin name abbreviations are associated with the wrong organism. The abbreviations follow international fisheries standards (e.g. GAD_MOR for 'GADUS MORHUA'). We can reconstruct the abbreviations from the organisms' names.
+
+
+```r
+
+# "(^[A-Za-z]{1,3})"
+# "_+([A-Za-z]{1,3})"
+
+abbr1 <- species_list$TROPHOSPECIES %>% str_extract(., "(^[A-Za-z]{1,3})")
+abbr2 <- species_list$TROPHOSPECIES %>% str_extract(., "(?<=_)([A-Za-z]{1,3})")
+species_list$ABBREVIATION <- paste(abbr1, ifelse(is.na(abbr2), "IND", abbr2), sep="_" )
+```
+
+
+#### Data augmentation
+
+1. Genus + Species
+We can extract more information from the 'trophospecies' column that contains both the Genus and the species name. We can use the Genus as additional information for the classification.
 
 _N.B._ It does not matter if you do not know what Genus and species names are. Just know that they are deeper levels in the taxonomy of an organism.
 
+Genus and species are grouped with '_'. We can split them.
 
 
+```r
+species_list %<>% separate(., col = TROPHOSPECIES, c("GENUS", "SPECIES"), 
+                           remove = FALSE, extra = "drop" )
+#> Warning: Expected 2 pieces. Missing pieces filled with `NA` in 6 rows [1, 4, 7, 10, 80,
+#> 111].
+```
+Finally, we can drop the column species because all species are different and cannot be used to group information.
+
+
+```r
+# Drop SPECIEs
+species_list %<>% select(-SPECIES)
+
+# Reorganize the species list to follow the taxonomy
+species_list %<>% relocate(GENUS, .after = FAMILY)
+```
+
+## List of interactions: pairwise list
+### Data cleaning
+
+For the purpose of the analysis, the data in 'species_list' and 'pairwise_list' need to match.
+We need to apply the same cleaning to this table.
+
+#### Correct mispellings
+
+```r
+# debug(locate_pattern)
+box::use(box/modify_strings[locate_pattern])
+
+box::use(box/modify_strings[replace_pattern])
+
+strings_to_correct <- locate_pattern(pairwise_list, "[^0-9a-zA-Z_-]")
+print(strings_to_correct)
+pairwise_list <- replace_pattern(x = pairwise_list, vector_pattern = patterns, vector_replacement = replacements )
+
+#### Correct PWKEY
+"(^[A-Za-z]{1,3})"
+"_+([A-Za-z]{1,3})"
+
+# debug(extract_and_merge)
+extract_and_merge(pairwise_list$PREDATOR, c("(^[A-Za-z]{1,3})", "_+([A-Za-z]{1,3})_?"), sep = ""   )
+
+box::use(box/modify_strings[test_extract])
+test_extract(pairwise_list$PREDATOR, "_+([A-Za-z]{1,3})(?(_)([A-Za-z]{1,3}))")
+
+```
+
+### Data transformation
+The data was provided as a long pairwise list which is limiting for the purpose of the analysis. We can convert the list to a squared binary matrix where the intersections of rows and columns contain the information for an interaction.
+
+In other words, '0s' means that the interaction is absent (or has yet to be observed in nature); '1s' indicates the presence of an interaction between the organisms listed in the columns and rows interacting.
 
 ## 

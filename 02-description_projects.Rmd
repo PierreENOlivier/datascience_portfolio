@@ -2,9 +2,14 @@
 
 Here I will provide a short description of each project included in this portfolio.
 
-## Project 1 - How to build simpler network models using unsupervised machine learning
+## Project 1 - Analysis of stock market data and construction of custom stock indexes
 
-## Project 2 - Guessing game using Machine Learning classification algorithms
+## Project 2 - How to build simpler network models using unsupervised machine learning
+
+<!--
+## Project 3 - Guessing game using Machine Learning classification algorithms
+
+-->
 
 ## File structure of projects
 Each project has been built under a common structure illustrated below.

@@ -5,7 +5,7 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 url: https://pierreenolivier.github.io/datascience_portfolio/index.html
 output: 
-  bookdown::gitbook:
+  bookdown::bs4_book:
       highlight: tango
 documentclass: book
 new_session: yes # use the K-M rendering method

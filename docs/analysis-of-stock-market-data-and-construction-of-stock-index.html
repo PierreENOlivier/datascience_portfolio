@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Part 1 Analysis of stock market data and construction of stock index | Data Science Portfolio</title>
+<meta name="author" content="Dr. Pierre Olivier">
+<meta name="description" content="1.1 Description In this short project I want to explore a type of data I am not familiar with (i.e. stock data) and apply a set of techniques I have experience with (i.e. statistics and time...">
+<meta name="generator" content="bookdown 0.30 with bs4_book()">
+<meta property="og:title" content="Part 1 Analysis of stock market data and construction of stock index | Data Science Portfolio">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://pierreenolivier.github.io/datascience_portfolio/index.html/analysis-of-stock-market-data-and-construction-of-stock-index.html">
+<meta property="og:description" content="1.1 Description In this short project I want to explore a type of data I am not familiar with (i.e. stock data) and apply a set of techniques I have experience with (i.e. statistics and time...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Part 1 Analysis of stock market data and construction of stock index | Data Science Portfolio">
+<meta name="twitter:description" content="1.1 Description In this short project I want to explore a type of data I am not familiar with (i.e. stock data) and apply a set of techniques I have experience with (i.e. statistics and time...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Data Science Portfolio</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">About Me</a></li>
+<li><a class="" href="projects-in-this-portfolio.html">Projects in this portfolio</a></li>
+<li class="book-part">PROJECT 1</li>
+<li><a class="active" href="analysis-of-stock-market-data-and-construction-of-stock-index.html"><span class="header-section-number">1</span> Analysis of stock market data and construction of stock index</a></li>
+<li><a class="" href="data-preprocessing.html"><span class="header-section-number">2</span> Data preprocessing</a></li>
+<li class="book-part">PROJECT 2</li>
+<li><a class="" href="intro-foodweb.html"><span class="header-section-number">3</span> Introduction to networks and food webs</a></li>
+<li><a class="" href="data-preprocessing-1.html"><span class="header-section-number">4</span> Data preprocessing</a></li>
+<li><a class="" href="data-exploration.html"><span class="header-section-number">5</span> Data exploration</a></li>
+<li><a class="" href="data-analysis.html"><span class="header-section-number">6</span> Data analysis</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/PierreENOlivier/datascience_portfolio.git">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="analysis-of-stock-market-data-and-construction-of-stock-index" class="section level1" number="1">
+<h1>
+<span class="header-section-number">Part 1</span> Analysis of stock market data and construction of stock index<a class="anchor" aria-label="anchor" href="#analysis-of-stock-market-data-and-construction-of-stock-index"><i class="fas fa-link"></i></a>
+</h1>
+<div id="description" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> Description<a class="anchor" aria-label="anchor" href="#description"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this short project I want to explore a type of data I am not familiar with (i.e. stock data) and apply a set of techniques I have experience with (i.e. statistics and time series analysis).
+I will extract stock prices for the major computer manufacturing companies, build a fictional stock index, and analyze the fluctuations of prices over time.</p>
+<p>The project relies on R libraries to extract stock data from databases. I then, either use functions from existing packages, or build my own package, to analyze stock data and build a custom stock index.</p>
+</div>
+<div id="goal" class="section level2" number="1.2">
+<h2>
+<span class="header-section-number">1.2</span> Goal<a class="anchor" aria-label="anchor" href="#goal"><i class="fas fa-link"></i></a>
+</h2>
+<p>Analyze the effect of price fluctuations on different types of indexes, and process a market split.
+To do so, I ascribe constant arbitrary share amounts for each index component (see raw data) and use historic data to follow fluctuations in the market price.</p>
+</div>
+<div id="main-tasks" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> Main tasks<a class="anchor" aria-label="anchor" href="#main-tasks"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li>Download and analyze stock prices for selected components</li>
+<li>Build custom indexes</li>
+<li>Build a package/library of custom R functions</li>
+<li>Analyze market split</li>
+</ol>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="projects-in-this-portfolio.html">Projects in this portfolio</a></div>
+<div class="next"><a href="data-preprocessing.html"><span class="header-section-number">2</span> Data preprocessing</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#analysis-of-stock-market-data-and-construction-of-stock-index"><span class="header-section-number">1</span> Analysis of stock market data and construction of stock index</a></li>
+<li><a class="nav-link" href="#description"><span class="header-section-number">1.1</span> Description</a></li>
+<li><a class="nav-link" href="#goal"><span class="header-section-number">1.2</span> Goal</a></li>
+<li><a class="nav-link" href="#main-tasks"><span class="header-section-number">1.3</span> Main tasks</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/PierreENOlivier/datascience_portfolio.git/blob/main/SM10-description_project.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/PierreENOlivier/datascience_portfolio.git/edit/main/SM10-description_project.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Science Portfolio</strong>" was written by Dr. Pierre Olivier. It was last built on 2022-11-11.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

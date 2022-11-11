@@ -1,0 +1,22 @@
+# (PART\*) PROJECT 1 {-}
+
+# Analysis of stock market data and construction of stock index
+
+## Description
+
+In this short project I want to explore a type of data I am not familiar with (i.e. stock data) and apply a set of techniques I have experience with (i.e. statistics and time series analysis).
+I will extract stock prices for the major computer manufacturing companies, build a fictional stock index, and analyze the fluctuations of prices over time.
+
+The project relies on R libraries to extract stock data from databases. I then, either use functions from existing packages, or build my own package, to analyze stock data and build a custom stock index.
+
+## Goal
+
+Analyze the effect of price fluctuations on different types of indexes, and process a market split.
+To do so, I ascribe constant arbitrary share amounts for each index component (see raw data) and use historic data to follow fluctuations in the market price.
+
+## Main tasks
+
+1. Download and analyze stock prices for selected components
+2. Build custom indexes
+3. Build a package/library of custom R functions
+4. Analyze market split

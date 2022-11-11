@@ -5,8 +5,7 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 url: https://pierreenolivier.github.io/datascience_portfolio/index.html
 output: 
-  bookdown::bs4_book:
-      highlight: tango
+  bookdown::bs4_book
 documentclass: book
 new_session: yes # use the K-M rendering method
 description: |
@@ -14,10 +13,10 @@ description: |
     
 ---
 
-# About Me
+# About Me {-}
 
-## Who I am
+## Who I am {-}
 
 This is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
 
-## My journey in Data Science
+## My journey in Data Science {-}

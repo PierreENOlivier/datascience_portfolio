@@ -1,0 +1,21 @@
+---
+title: "Introduction to Package 'indexwrangling'"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to Package 'indexwrangling'}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This package was built to tidy xts financial time series.
+
+```{r setup}
+library(indexanalysis)
+```

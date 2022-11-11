@@ -1,0 +1,37 @@
+Package: indexanalysis
+Title: indexanalysis: Tidy xts Time Series of Stock Data and Compute
+    Custom Indexes
+Version: 1.0.0.9000
+Authors@R:
+    person("Pierre", "Olivier", , "pierre.olivier.eloi@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-3755-3966"))
+Description: The package contains functions that can import stock data
+    from symbol names, process the xts time series, return a tidy table,
+    and create custom indexes from stock components.
+License: MIT + file LICENSE
+Imports:
+    assertthat,
+    dplyr,
+    glue,
+    magrittr,
+    qpdf,
+    quantmod,
+    rlang,
+    stringr,
+    tibble,
+    tidyr,
+    tidyselect,
+    tsibble,
+    utils,
+    zoo,
+    lubridate,
+    purrr
+Suggests:
+    knitr,
+    rmarkdown
+VignetteBuilder:
+    knitr,
+    rmarkdown
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1

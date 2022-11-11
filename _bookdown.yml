@@ -11,7 +11,9 @@ language:
 
 rmd_files: [
   "index.Rmd", 
-  "02-description_projects.Rmd", 
+  "02-description_projects.Rmd",
+  "SM10-description_project.Rmd",
+  "SM11-project_setup.Rmd",
   "01-intro_food_web.Rmd",
   "FW11-project_setup.Rmd",
   "FW12-data_exploration.Rmd",

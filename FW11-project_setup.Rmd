@@ -13,7 +13,7 @@ _N.B._ If needed, the dataset can be retrieved from:
 - as a Data Paper ("Yes").
 
 ## Load dependencies
-```{r setup-dependencies, echo=TRUE, results='hide'}
+```{r setup-dependencies, echo=TRUE, message = FALSE, results='hide'}
 # rm(list = ls())
 library(tidyverse)
 library(magrittr)
@@ -37,11 +37,9 @@ box::use(box/modify_strings[locate_pattern, replace_pattern])
 
 ## Data importation
 
-
-
 The dataset is provided as tables formatted inside text files.
 
-### Import species
+### Import species list
 ```{r import-species}
 species_list <- read.delim("raw_data/Barents_Sea/SpeciesList_2015.txt", header = TRUE)
 sp_save <- species_list # keep original copy
@@ -51,14 +49,14 @@ head(species_list)
 
 The list of species is provide as a table that contains the species names along with an abbreviation and the taxonomy (i.e. classification of each organism).
 
-### Import interactions
+### Import interactions list
 ```{r import-pairwise}
 pairwise_list <- read.delim("raw_data/Barents_Sea/PairwiseList_2015.txt", header = TRUE)
 pw_save <- species_list # keep original copy
 head(pairwise_list)
 ```
 The list of trophic interactions (a.k.a. relationships of 'who eats and whom') is provided as a pairwise list. The first column contains an identifier.
-The consecutive columns PREDATOR and PREY contains the species names of the predator and prey, respectively. The row contains the relationship between a predator and a prey.
+The consecutive columns PREDATOR and PREY contains the species names of the predator and prey, respectively. The rows contain the relationships between a predator and a prey.
 
 ### Import literature references
 ```{r import-refs}
@@ -129,6 +127,7 @@ species_list$ABBREVIATION <- paste(abbr1, ifelse(is.na(abbr2), "IND", abbr2), se
 #### Data augmentation
 
 1. Genus + Species
+
 We can extract more information from the 'trophospecies' column that contains both the Genus and the species name. We can use the Genus as additional information for the classification.
 
 _N.B._ It does not matter if you do not know what Genus and species names are. Just know that they are deeper levels in the taxonomy of an organism.

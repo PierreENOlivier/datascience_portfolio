@@ -1,17 +1,17 @@
-# Projects in this portfolio
+# Projects in this portfolio {-}
 
 Here I will provide a short description of each project included in this portfolio.
 
-## Project 1 - Analysis of stock market data and construction of custom stock indexes
+## Project 1 - Analysis of stock market data and construction of custom stock indexes {-}
 
-## Project 2 - How to build simpler network models using unsupervised machine learning
+## Project 2 - How to build simpler network models using unsupervised machine learning {-}
 
 <!--
 ## Project 3 - Guessing game using Machine Learning classification algorithms
 
 -->
 
-## File structure of projects
+## File structure of projects {-}
 Each project has been built under a common structure illustrated below.
 
 Files associated to a specific project were identified by an ID at the start of the file name.

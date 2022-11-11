@@ -154,7 +154,7 @@ prices_ts <- prices_ts %>%
 
 
 ### Save as .csv
-```{r save-csv-prices}
+```{r save-csv-prices, cache=TRUE}
 prices_ts_close <- prices_ts %>%
   as_tibble%>%
   filter(Price.Type == "Close")%>%

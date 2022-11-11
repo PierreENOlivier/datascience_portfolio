@@ -9,7 +9,7 @@ output:
 documentclass: book
 new_session: yes # use the K-M rendering method
 description: |
-  Portfolio projects in Data Science: machine learning and statistical inference
+  Portfolio projects in Data Science: network graphs, statistical inference, time series, and machine learning 
     
 ---
 

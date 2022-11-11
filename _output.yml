@@ -3,16 +3,16 @@ bookdown::bs4_book:
   theme:
     bootswatch: cerulean
     primary: "#0403b2"
+    base_font:
+      google: Montserrat
   repo:
     base: https://github.com/PierreENOlivier/datascience_portfolio.git
-    branch: main
-bookdown::gitbook:
-  css: style.css
+    branch: master
   config:
     sharing:
       github: yes
       facebook: no
-      twitter: no
+      twitter: yes
     download: true
     toc:
       collapse: section

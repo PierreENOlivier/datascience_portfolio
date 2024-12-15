@@ -1,0 +1,16 @@
+```         
+---
+title: "Data Analysis in Python"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+```
+
+```{python}
+#| label: setup
+
+import numpy as np
+
+``` 

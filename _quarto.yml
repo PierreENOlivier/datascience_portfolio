@@ -1,0 +1,57 @@
+project:
+  type: book
+  
+book:
+  title: "Data Science Portfolio"
+  author: "Pierre E.N. Olivier"
+  reader-mode: true
+  date: "5-12-2024"
+  
+  description: |
+    Portfolio projects in Data Science: network graphs, statistical inference, 
+    time series, and machine learning 
+  site-url: https://pierreenolivier.github.io/datascience_portfolio/index.html
+  repo-url: https://github.com/PierreENOlivier/datascience_portfolio
+  
+  repo-branch: master
+  
+  chapters:
+    - index.qmd
+    
+    - part: 02-description_projects.qmd
+    
+    - part: SM10-description_project.qmd
+      chapters:
+        - SM11-project_setup.qmd
+        
+    - part: FW10-intro_food_web.qmd
+      chapters:
+        - FW11-project_setup.qmd
+        - FW12-data_exploration.qmd
+        - FW13_data_analysis.qmd
+    # "TP1-project_setup.qmd"
+
+number-depth: 2
+
+format:
+  html:
+    theme: cosmo
+    code-link: true
+    author-meta: "Pierre E.N. Olivier"
+    # include-in-header: "plausible.html"
+    callout-appearance: simple
+    
+  pdf:
+    documentclass: scrreprt
+
+  
+    
+    
+
+editor: visual
+
+# before_chapter_script: ["_global_options.R", "_before_chapter.R"]
+
+# edit: https://github.com/PierreENOlivier/datascience_portfolio/edit/main/%s
+# view: https://github.com/PierreENOlivier/datascience_portfolio/blob/main/%s
+

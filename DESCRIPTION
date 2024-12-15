@@ -1,0 +1,19 @@
+Package: podsfolio
+Title: Pierre Olivier - Data Science Portfolio
+Version: 0.1
+Authors@R: c(
+    person("Pierre", "Olivier", , "pierre.olivier.eloi@gmail.com", role = c("aut", "cre")),
+  )
+URL: https://github.com/PierreENOlivier/datascience_portfolio
+Depends: 
+    R (>= 3.1.0)
+Imports:
+    igraph
+    tidyverse (>= 2.0.0),
+Suggests:
+    downlit,
+    knitr,
+    sessioninfo
+Remotes: tidyverse/dplyr
+Encoding: UTF-8
+License: MIT + file LICENSE

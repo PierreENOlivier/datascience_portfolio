@@ -1,0 +1,143 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Science Portfolio",
+    "section": "",
+    "text": "About Me",
+    "crumbs": [
+      "About Me"
+    ]
+  },
+  {
+    "objectID": "index.html#who-i-am",
+    "href": "index.html#who-i-am",
+    "title": "Data Science Portfolio",
+    "section": "Who I am",
+    "text": "Who I am\nThis is an R Markdown format used for publishing markdown documents to GitHub. When you click the Knit button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.",
+    "crumbs": [
+      "About Me"
+    ]
+  },
+  {
+    "objectID": "index.html#my-journey-in-data-science",
+    "href": "index.html#my-journey-in-data-science",
+    "title": "Data Science Portfolio",
+    "section": "My journey in Data Science",
+    "text": "My journey in Data Science",
+    "crumbs": [
+      "About Me"
+    ]
+  },
+  {
+    "objectID": "02-description_projects.html",
+    "href": "02-description_projects.html",
+    "title": "Projects in this portfolio",
+    "section": "",
+    "text": "Project 1 - Analysis of stock market data and construction of custom stock indexes\nIn this short project I extract historic stock price data, build fictional indexes, and play around with time series.",
+    "crumbs": [
+      "Projects in this portfolio"
+    ]
+  },
+  {
+    "objectID": "02-description_projects.html#project-2---how-to-build-simpler-network-models-using-unsupervised-machine-learning",
+    "href": "02-description_projects.html#project-2---how-to-build-simpler-network-models-using-unsupervised-machine-learning",
+    "title": "Projects in this portfolio",
+    "section": "Project 2 - How to build simpler network models using unsupervised machine learning",
+    "text": "Project 2 - How to build simpler network models using unsupervised machine learning\nThis more consequent project combines network analysis and machine learning to simplify a complex network.",
+    "crumbs": [
+      "Projects in this portfolio"
+    ]
+  },
+  {
+    "objectID": "02-description_projects.html#file-structure-of-projects",
+    "href": "02-description_projects.html#file-structure-of-projects",
+    "title": "Projects in this portfolio",
+    "section": "File structure of projects",
+    "text": "File structure of projects\nEach project has been built under a common structure illustrated below.\nFiles associated to a specific project were identified by an ID at the start of the file name.\nWithin a project, each file is organized along the data pipeline.\n\n\n\n\nFile structure of the portfolio",
+    "crumbs": [
+      "Projects in this portfolio"
+    ]
+  },
+  {
+    "objectID": "SM10-description_project.html",
+    "href": "SM10-description_project.html",
+    "title": "PROJECT 1",
+    "section": "",
+    "text": "Analysis of stock market data and construction of stock index",
+    "crumbs": [
+      "PROJECT 1"
+    ]
+  },
+  {
+    "objectID": "SM10-description_project.html#description",
+    "href": "SM10-description_project.html#description",
+    "title": "PROJECT 1",
+    "section": "Description",
+    "text": "Description\nIn this short project I want to explore a type of data I am not familiar with (i.e. stock data) and apply a set of techniques I have experience with (i.e. statistics and time series analysis). I will extract stock prices for the major computer manufacturing companies, build a fictional stock index, and analyze the fluctuations of prices over time.\nThe project relies on R libraries to extract stock data from databases. I then, either use functions from existing packages, or build my own package, to analyze stock data and build a custom stock index.",
+    "crumbs": [
+      "PROJECT 1"
+    ]
+  },
+  {
+    "objectID": "SM10-description_project.html#goal",
+    "href": "SM10-description_project.html#goal",
+    "title": "PROJECT 1",
+    "section": "Goal",
+    "text": "Goal\nAnalyze the effect of price fluctuations on different types of indexes, and process a market split. To do so, I ascribe constant arbitrary share amounts for each index component (see raw data) and use historic data to follow fluctuations in the market price.",
+    "crumbs": [
+      "PROJECT 1"
+    ]
+  },
+  {
+    "objectID": "SM10-description_project.html#main-tasks",
+    "href": "SM10-description_project.html#main-tasks",
+    "title": "PROJECT 1",
+    "section": "Main tasks",
+    "text": "Main tasks\n\nDownload and analyze stock prices for selected components\nBuild custom indexes\nBuild a package/library of custom R functions\nAnalyze market split",
+    "crumbs": [
+      "PROJECT 1"
+    ]
+  },
+  {
+    "objectID": "FW10-intro_food_web.html",
+    "href": "FW10-intro_food_web.html",
+    "title": "PROJECT 2",
+    "section": "",
+    "text": "Introduction to networks and food webs\nYou might remember from high school hearing about the food chain: that herbivores eat plants, carnivores eat those herbivores, and so on in a successive chain of food relationships. Relationships can be represented as data and analysed using algorithms.\nThe food web is an extension of this concept. Because there exists many species of plants, herbivores, and carnivores in an ecosystem, there exists many interconnected food chains. The food web represents those interconnected food chains at the scale of an ecosystem and it can be mapped as a network of interactions between species.\nEcological networks, such as food webs, can be represented in mathematics as a matrix, converted to a graph, and analysed using algorithms developed for network and graph theories.\nWe can imagine food webs as social media networks, but instead of representing relationships between friends, we have relationships between enemies.",
+    "crumbs": [
+      "PROJECT 2"
+    ]
+  },
+  {
+    "objectID": "FW10-intro_food_web.html#what-are-networks",
+    "href": "FW10-intro_food_web.html#what-are-networks",
+    "title": "PROJECT 2",
+    "section": "What are networks?",
+    "text": "What are networks?\nNetworks are graphical objects that represents entities (e.g. people) as nodes, and the connections between these nodes as edges (or links).\nSimilarly, pairwise relationships in biological and ecological systems can be represented as nodes and links: - the nodes of the network represent ‘species’, - the links represent ‘relationships’ between those species.\nIn food webs, the links represents ‘who eats whom’ and points to the predator. In the illustration below, each node (or species) is represented by a circle at the exception of the top predator—the Atlantic cod, Gadus morhua; each link is represented by an arrow pointing from the prey to the predator.\n\n\n\nGraphical representation of a food web",
+    "crumbs": [
+      "PROJECT 2"
+    ]
+  },
+  {
+    "objectID": "FW10-intro_food_web.html#how-to-analyse-network-data",
+    "href": "FW10-intro_food_web.html#how-to-analyse-network-data",
+    "title": "PROJECT 2",
+    "section": "How to analyse network data",
+    "text": "How to analyse network data\nWe can analyse networks according to two schools: topological analysis and flow analysis.\nTopological analysis focuses on the structure of the network: - which are the nodes, - which other nodes are they connected to, - on average, how many relationships are represented in the network, - how are those relationships distributed across nodes, - are there any social subgroups signaling communities, - …\nFor a longer intro to food webs and why we study food webs, you can read the summary of my doctoral thesis.\nIn the next section, we will build network graphs from their matrix forms, analyse them, and use methods from statistics and machine learning to perform various data science tasks.",
+    "crumbs": [
+      "PROJECT 2"
+    ]
+  },
+  {
+    "objectID": "FW12-data_exploration.html",
+    "href": "FW12-data_exploration.html",
+    "title": "3  Data exploration",
+    "section": "",
+    "text": "[WIP]",
+    "crumbs": [
+      "PROJECT 2",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data exploration</span>"
+    ]
+  }
+]

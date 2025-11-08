@@ -18,15 +18,19 @@ _N.B._ If needed, the dataset can be retrieved from:
 # rm(list = ls())
 library(tidyverse)
 library(magrittr)
+library(rvest)
+library(netstat)
 
+```
+
+```{r}
 old_opts <- options() # preserve current preferences for after we exist the function
 options(box.path = c("./scripts", 
                        "../scripts",
                        "./scripts/box",
                        "../scripts/box") )
-  
+``` 
 
-```
 
 Load modules
 ```{r load-module}
@@ -35,10 +39,44 @@ box::use(box/modify_strings[locate_pattern, replace_pattern])
 # refresh("box/modify_strings")
          
 ```
+# Web Scraping Data files
+To expand on my knowledge and show that this project could easily update with newer version of the data, I will use web scraping to fetch the files from the repository.
+Note that this type of data rarely get updates so it would be faster to just download
+the files manually.
 
-# Download data from source
+## Web Scraping setup
 ```{r}
-url <- "https://figshare.com/articles/dataset/Data_Paper_Data_Paper/3559350?backTo=/collections/Who_eats_whom_in_the_Barents_Sea_a_food_web_topology_from_plankton_to_whales/3306768"
+url <- "https://figshare.com/collections/Who_eats_whom_in_the_Barents_Sea_a_food_web_topology_from_plankton_to_whales/3306768"
+
+
+url_all <- "https://figshare.com/ndownloader/articles/3559350/versions/1"
+``` 
+
+
+```{r}
+page <- url |> 
+    read_html()
+
+``` 
+```{r}
+hrefs <- page |> 
+    html_elements("a") |> 
+    
+    html_attr("href")
+``` 
+
+```{r}
+page |> 
+    html_elements("a") |> 
+    
+    html_attr("#a11y-1-tab-tab-download")
+``` 
+
+a11y-1-tab-tab-download
+
+## Download data from source
+```{r}
+
 
 file_name <- "SpeciesList_BS.txt"
 folder_path <- file.path("data", "raw_data", "Barents_Sea")

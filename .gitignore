@@ -1,9 +1,11 @@
 # Files, folders, and formats to ignore
 
 .Rhistory
-.RData
+# .RData
 .Rproj.user
-*.Rproj
+# *.Rproj
 
 # Raw data
-raw_data/
+# raw_data/
+
+# /.quarto/

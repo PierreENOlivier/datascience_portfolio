@@ -1,3 +1,0 @@
-# Data analysis
-
-## Load dependencies
